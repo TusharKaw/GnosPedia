@@ -49,6 +49,117 @@ $wgLogos = [
 $wgEnableEmail = true;
 $wgEnableUserEmail = true; # UPO
 
+# Image processing configuration (use GD for raster thumbs)
+$wgUseImageMagick = false; // use GD for JPG/PNG/GIF
+$wgImageMagickConvertCommand = null;
+$wgImageMagickCommand = null;
+$wgShellLocale = 'en_US.UTF-8';
+
+# Disable ShellBox completely
+$wgShellboxUrl = false;
+$wgShellboxCommandPath = false;
+
+# Use built-in shell restriction (avoid external wrapper scripts)
+$wgShellRestrictionMethod = 'builtin';
+
+# Disable IM; enable resizing via GD
+$wgUseImageResize = true;
+$wgGenerateThumbnailOnParse = true;
+
+# Serve thumbnails via thumb.php (recommended for PHP built-in server)
+$wgThumbnailScriptPath = $wgScriptPath . '/thumb.php';
+
+# Set up temporary directory for ImageMagick
+$wgTmpDirectory = "$IP/images/tmp";
+$wgImageMagickTempDir = "$IP/images/tmp";
+
+# Create the temp directory if it doesn't exist
+if (!is_dir($wgTmpDirectory)) {
+    mkdir($wgTmpDirectory, 0777, true);
+    chmod($wgTmpDirectory, 0777);
+}
+
+# File repository configuration
+$wgUploadDirectory = "$IP/images";
+$wgUploadPath = "$wgScriptPath/images";
+
+# Enable file uploads and image processing
+$wgEnableUploads = true;
+$wgUseImageMagick = true;
+$wgUseImageResize = true;
+$wgGenerateThumbnailOnParse = true;
+$wgAllowImageMoving = true;
+$wgAllowCopyUploads = true;
+$wgCopyUploadsFromSpecialUpload = true;
+# Increase max image area to avoid rejection of large images
+$wgMaxImageArea = 1.25e8; // ~125 megapixels
+
+# Clear any existing backends to prevent duplicates
+$wgFileBackends = [];
+
+# Configure file repository with default backend
+$wgLocalFileRepo = [
+    'class' => 'LocalRepo',
+    'name' => 'local',
+    'directory' => $wgUploadDirectory,
+    'scriptDirUrl' => $wgScriptPath,
+    'url' => $wgUploadPath,
+    'hashLevels' => 2,
+    'thumbScriptUrl' => $wgScriptPath . '/thumb.php',
+    'transformVia404' => false,
+    'deletedDir' => "$wgUploadDirectory/archive",
+    'deletedHashLevels' => 0,
+    'fileMode' => 0666,
+    'directoryMode' => 0777,
+];
+
+# Set cache directory
+$wgCacheDirectory = "$IP/cache";
+$wgFileCacheDirectory = "$wgCacheDirectory/filecache";
+
+# Create necessary directories if they don't exist
+@mkdir($wgCacheDirectory, 0777, true);
+@mkdir($wgFileCacheDirectory, 0777, true);
+@mkdir($wgImageMagickTempDir, 0777, true);
+@mkdir("$wgUploadDirectory/temp", 0777, true);
+@mkdir("$wgUploadDirectory/thumb", 0777, true);
+@mkdir("$wgUploadDirectory/tmp", 0777, true);
+
+# Set permissions for web server
+@chmod($wgCacheDirectory, 0777);
+@chmod($wgFileCacheDirectory, 0777);
+@chmod($wgImageMagickTempDir, 0777);
+@chmod($wgUploadDirectory, 0777);
+@chmod("$wgUploadDirectory/temp", 0777);
+@chmod("$wgUploadDirectory/thumb", 0777);
+@chmod("$wgUploadDirectory/tmp", 0777);
+
+// Duplicate backend config removed; using single $wgLocalFileRepo above
+
+# Enable file uploads
+$wgEnableUploads = true;
+$wgUseImageMagick = true;
+$wgUseImageResize = true;
+
+# Set file types that can be uploaded
+$wgFileExtensions = [
+    'png', 'gif', 'jpg', 'jpeg', 'svg',
+    'pdf', 'ppt', 'pptx', 'xls', 'xlsx', 'doc', 'docx',
+    'odt', 'odp', 'ods', 'odg', 'odc', 'odf', 'odb', 'odm',
+    'mp3', 'ogg', 'wav', 'mpg', 'm4a', 'oga', 'webm', 'ogv', 'mp4', 'm4v',
+];
+
+# Set maximum upload size to 100MB
+$wgMaxUploadSize = 1024 * 1024 * 100;
+
+# SVG Converter settings
+$wgSVGConverter = 'ImageMagick';
+$wgSVGConverters = [
+    'ImageMagick' => '/opt/homebrew/bin/magick -background white -thumbnail ${width}x${height}^ -extent ${width}x${height} $input PNG:$output',
+    'rsvg' => '/opt/homebrew/bin/rsvg-convert -w $width -h $height $input -o $output'
+];
+$wgSVGMaxSize = 2048;
+
 $wgEmergencyContact = "";
 $wgPasswordSender = "";
 
@@ -112,11 +223,37 @@ $wgMemCachedServers = [];
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
 $wgEnableUploads = true;
-#$wgUseImageMagick = true;
-#$wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgImportSources = [ "en.wikipedia.org" ];
+$wgGroupPermissions['*']['import'] = true;
+$wgGroupPermissions['*']['importupload'] = true;
+$wgGroupPermissions['user']['importupload'] = true;
+$wgMaxUploadSize = 1024 * 1024 * 200; // 200MB
+$wgFileExtensions = array_merge($wgFileExtensions, ['xml', 'zip', '7z', 'pdf']);
+
+// Allow sysops to edit interface CSS
+$wgGroupPermissions['sysop']['editinterface'] = true;
+$wgGroupPermissions['sysop']['editsitecss'] = true;
+
+$wgImportSources = [
+    'wikipedia',  // allow import from English Wikipedia
+    'mediawiki',  // allow import from MediaWiki.org
+];
+$wgEnableImport = true;  // enable import in Special:Import
+
+// Enable ImageMagick (direct binary, no wrapper script)
+$wgUseImageMagick = true;
+$wgImageMagickConvertCommand = '/opt/homebrew/bin/magick';
+
+// Set the PATH environment variable for shell commands
+putenv('PATH=' . getenv('PATH') . ':/opt/homebrew/bin:/usr/local/bin');
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = false;
+
+# Temporary debug logging (disable after troubleshooting)
+$wgShowExceptionDetails = true;
+$wgDebugLogFile = '/tmp/mw-debug.log';
+$wgDebugComments = true;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
@@ -171,6 +308,11 @@ wfLoadExtension( 'Cite' );
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'GeoData' );
+wfLoadExtension( 'VisualEditor' );
+
+wfLoadExtension( 'TitleBlacklist' );
+// wfLoadExtension( 'WikibaseRepository' );
+// wfLoadExtension( 'WikibaseClient' );
 
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'TemplateStyles' );

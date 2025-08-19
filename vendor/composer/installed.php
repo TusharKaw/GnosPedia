@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'mediawiki/core',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '80e919571158db506ee82bad391587700846d2e0',
         'type' => 'mediawiki-core',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -251,9 +251,9 @@
             'dev_requirement' => false,
         ),
         'mediawiki/core' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '80e919571158db506ee82bad391587700846d2e0',
             'type' => 'mediawiki-core',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1251,9 +1251,9 @@
             'dev_requirement' => false,
         ),
         'wikimedia/shellbox' => array(
-            'pretty_version' => '4.2.0',
-            'version' => '4.2.0.0',
-            'reference' => 'b5aa54be64f28abf1eaa166164d4929b61a2c3ac',
+            'pretty_version' => '4.3.0',
+            'version' => '4.3.0.0',
+            'reference' => '35d9cd2d88368464df8760ca4d59c98f46db8cfe',
             'type' => 'library',
             'install_path' => __DIR__ . '/../wikimedia/shellbox',
             'aliases' => array(),
