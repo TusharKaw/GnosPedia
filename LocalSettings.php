@@ -29,10 +29,10 @@ $wgMetaNamespace = "Gnospedia";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "";
+$wgScriptPath = "/mediawiki";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://localhost:8080";
+$wgServer = "http://13.233.247.67";
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -154,10 +154,10 @@ $wgMaxUploadSize = 1024 * 1024 * 100;
 
 # SVG Converter settings
 $wgSVGConverter = 'ImageMagick';
-$wgSVGConverters = [
-    'ImageMagick' => '/opt/homebrew/bin/magick -background white -thumbnail ${width}x${height}^ -extent ${width}x${height} $input PNG:$output',
-    'rsvg' => '/opt/homebrew/bin/rsvg-convert -w $width -h $height $input -o $output'
-];
+// Use Linux default paths; ensure ImageMagick is installed (package: imagemagick)
+$wgImageMagickConvertCommand = '/usr/bin/convert';
+// Clear any macOS-specific custom converters
+unset( $wgSVGConverters );
 $wgSVGMaxSize = 2048;
 
 $wgEmergencyContact = "";
@@ -167,49 +167,15 @@ $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 
-## Database settings
-$wgDBtype = "sqlite";
-$wgDBname = "wikidb";
-$wgDBuser = "wikiuser";
-$wgDBpassword = "StrongPassword123!";
-
-# SQLite-specific settings
-$wgSQLiteDataDir = "/Users/tusharkaw/Downloads/data";
-$wgObjectCaches[CACHE_DB] = [
-	'class' => SqlBagOStuff::class,
-	'loggroup' => 'SQLBagOStuff',
-	'server' => [
-		'type' => 'sqlite',
-		'dbname' => 'wikicache',
-		'tablePrefix' => '',
-		'variables' => [ 'synchronous' => 'NORMAL' ],
-		'dbDirectory' => $wgSQLiteDataDir,
-		'trxMode' => 'IMMEDIATE',
-		'flags' => 0
-	]
-];
-$wgLocalisationCacheConf['storeServer'] = [
-	'type' => 'sqlite',
-	'dbname' => "{$wgDBname}_l10n_cache",
-	'tablePrefix' => '',
-	'variables' => [ 'synchronous' => 'NORMAL' ],
-	'dbDirectory' => $wgSQLiteDataDir,
-	'trxMode' => 'IMMEDIATE',
-	'flags' => 0
-];
-$wgJobTypeConf['default'] = [
-	'class' => 'JobQueueDB',
-	'claimTTL' => 3600,
-	'server' => [
-		'type' => 'sqlite',
-		'dbname' => "{$wgDBname}_jobqueue",
-		'tablePrefix' => '',
-		'variables' => [ 'synchronous' => 'NORMAL' ],
-		'dbDirectory' => $wgSQLiteDataDir,
-		'trxMode' => 'IMMEDIATE',
-		'flags' => 0
-	]
-];
+## Database settings (MariaDB/MySQL)
+$wgDBtype = 'mysql';
+$wgDBserver = 'localhost';
+$wgDBname = 'wikidb';
+$wgDBuser = 'wikiuser';
+$wgDBpassword = 'StrongPassword123!';
+// Optional: table prefix if you share the DB
+// $wgDBprefix = '';
+// Use default object cache and job queue (DB-backed) for MySQL
 
 
 # Shared database table
@@ -218,6 +184,7 @@ $wgSharedTables[] = "actor";
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_NONE;
+$wgMessageCacheType = CACHE_NONE;
 $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
@@ -233,6 +200,7 @@ $wgFileExtensions = array_merge($wgFileExtensions, ['xml', 'zip', '7z', 'pdf']);
 // Allow sysops to edit interface CSS
 $wgGroupPermissions['sysop']['editinterface'] = true;
 $wgGroupPermissions['sysop']['editsitecss'] = true;
+$wgGroupPermissions['sysop']['editsitejs'] = true;
 
 $wgImportSources = [
     'wikipedia',  // allow import from English Wikipedia
@@ -242,10 +210,10 @@ $wgEnableImport = true;  // enable import in Special:Import
 
 // Enable ImageMagick (direct binary, no wrapper script)
 $wgUseImageMagick = true;
-$wgImageMagickConvertCommand = '/opt/homebrew/bin/magick';
+$wgImageMagickConvertCommand = '/usr/bin/convert';
 
-// Set the PATH environment variable for shell commands
-putenv('PATH=' . getenv('PATH') . ':/opt/homebrew/bin:/usr/local/bin');
+// Set the PATH environment variable for shell commands (Linux typical paths)
+putenv('PATH=' . getenv('PATH') . ':/usr/local/bin:/usr/bin');
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = false;
@@ -303,19 +271,27 @@ wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
 
-wfLoadExtension( 'ParserFunctions' );
-wfLoadExtension( 'Cite' );
-wfLoadExtension( 'TemplateData' );
-wfLoadExtension( 'WikiEditor' );
-wfLoadExtension( 'GeoData' );
-wfLoadExtension( 'VisualEditor' );
-
-wfLoadExtension( 'TitleBlacklist' );
+// Load extensions only if present to avoid fatal errors during deployment
+$__extensionsToLoad = [
+    'ParserFunctions',
+    'Cite',
+    'TemplateData',
+    'WikiEditor',
+    'GeoData',
+    'VisualEditor',
+    'TitleBlacklist',
+    'Scribunto',
+    'TemplateStyles',
+];
+foreach ( $__extensionsToLoad as $__ext ) {
+    if ( is_readable( "$IP/extensions/$__ext/extension.json" ) ) {
+        wfLoadExtension( $__ext );
+    }
+}
 // wfLoadExtension( 'WikibaseRepository' );
 // wfLoadExtension( 'WikibaseClient' );
 
-wfLoadExtension( 'Scribunto' );
-wfLoadExtension( 'TemplateStyles' );
+// (Loaded via guarded loader above)
 
 // Set the default engine to LuaStandalone
 $wgScribuntoDefaultEngine = 'luastandalone';
@@ -323,12 +299,17 @@ $wgScribuntoDefaultEngine = 'luastandalone';
 // Configure LuaStandalone engine with LuaJIT
 $wgScribuntoEngineConf['luastandalone'] = [
     'class' => 'MediaWiki\Extension\Scribunto\Engines\LuaStandalone\LuaStandaloneEngine',
-    'luaPath' => '/opt/homebrew/bin/luajit',
+    'luaPath' => '/usr/bin/luajit',
     'memoryLimit' => 500000000,  // 500MB
     'cpuLimit' => 30,           // 30 seconds
     'maxLangCacheSize' => 30,   // Maximum number of compiled scripts to cache
     'enableDebug' => true,      // Enable debug mode for better error messages
 ];
+
+// Fallback to Lua 5.1 if LuaJIT is not available
+if ( !is_executable( '/usr/bin/luajit' ) && is_executable( '/usr/bin/lua5.1' ) ) {
+    $wgScribuntoEngineConf['luastandalone']['luaPath'] = '/usr/bin/lua5.1';
+}
 
 // Enable GeSHi syntax highlighting
 $wgScribuntoUseGeSHi = true;
