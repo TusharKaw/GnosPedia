@@ -15,9 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
-
-
-
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
@@ -29,10 +26,10 @@ $wgMetaNamespace = "Gnospedia";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "/mediawiki";
+$wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://13.233.247.67";
+$wgServer = "http://localhost:8000";
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -169,7 +166,7 @@ $wgEmailAuthentication = true;
 
 ## Database settings (MariaDB/MySQL)
 $wgDBtype = 'mysql';
-$wgDBserver = 'localhost';
+$wgDBserver = '127.0.0.1';
 $wgDBname = 'wikidb';
 $wgDBuser = 'wikiuser';
 $wgDBpassword = 'StrongPassword123!';
@@ -184,6 +181,7 @@ $wgSharedTables[] = "actor";
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_NONE;
+$wgParserCacheType = CACHE_NONE;
 $wgMessageCacheType = CACHE_NONE;
 $wgMemCachedServers = [];
 
@@ -283,11 +281,11 @@ $__extensionsToLoad = [
     'Scribunto',
     'TemplateStyles',
 ];
-foreach ( $__extensionsToLoad as $__ext ) {
-    if ( is_readable( "$IP/extensions/$__ext/extension.json" ) ) {
-        wfLoadExtension( $__ext );
-    }
-}
+// foreach ( $__extensionsToLoad as $__ext ) {
+//     if ( is_readable( "$IP/extensions/$__ext/extension.json" ) ) {
+//         wfLoadExtension( $__ext );
+//     }
+// }
 // wfLoadExtension( 'WikibaseRepository' );
 // wfLoadExtension( 'WikibaseClient' );
 
