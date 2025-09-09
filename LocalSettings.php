@@ -166,7 +166,7 @@ $wgEmailAuthentication = true;
 
 ## Database settings (MariaDB/MySQL)
 $wgDBtype = 'mysql';
-$wgDBserver = '127.0.0.1';
+$wgDBserver = 'localhost';
 $wgDBname = 'wikidb';
 $wgDBuser = 'wikiuser';
 $wgDBpassword = 'StrongPassword123!';
