@@ -33,7 +33,7 @@ use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
- * Gadgets repo powered by MediaWiki:Gadgets-definition
+ * Gadgets repo powered by infoBlizz:Gadgets-definition
  */
 class MediaWikiGadgetsDefinitionRepo extends GadgetRepo {
 	private const CACHE_VERSION = 4;

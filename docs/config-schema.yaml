@@ -3370,7 +3370,7 @@ config-schema:
     FooterIcons:
         default:
             copyright: { copyright: [] }
-            poweredby: { mediawiki: { src: null, url: 'https://www.mediawiki.org/', alt: 'Powered by MediaWiki', lang: en } }
+            poweredby: { mediawiki: { src: null, url: 'https://www.mediawiki.org/', alt: 'powered by infoBlizz', lang: en } }
         type: object
         description: |-
             Abstract list of footer icons for skins in place of old copyrightico and poweredbyico code

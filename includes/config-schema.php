@@ -649,7 +649,7 @@ return [
 					'mediawiki' => [
 						'src' => null,
 						'url' => 'https://www.mediawiki.org/',
-						'alt' => 'Powered by MediaWiki',
+						'alt' => 'powered by infoBlizz',
 						'lang' => 'en',
 					],
 				],
