@@ -1,0 +1,9 @@
+# Local MediaWiki config
+LocalSettings.php
+
+# MacOS temp files
+*.DS_Store
+
+# Temporary images
+images/tmp/
+
