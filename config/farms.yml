@@ -1,0 +1,27 @@
+# GnosPedia Wiki Farm Configuration
+# This file defines how subdomains map to wikis
+
+# Main farm configuration
+gnospedia:
+  # Server pattern for subdomains
+  server: '(?P<wikiID>[a-z0-9-]+)\.localhost:4000'
+  
+  # Database suffix
+  suffix: 'wiki'
+  
+  # Wiki ID from the subdomain
+  wikiID: '$wikiID'
+  
+  # Configuration files to load for each wiki
+  config:
+    - file: 'FarmSettings.php'
+      executable: true
+
+# Main wiki configuration (localhost:4000)
+main:
+  server: 'localhost:4000'
+  suffix: ''
+  wikiID: 'main'
+  config:
+    - file: 'MainSettings.php'
+      executable: true

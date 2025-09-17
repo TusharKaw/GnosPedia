@@ -1,0 +1,327 @@
+/* GnosPedia Create Wiki Styles */
+
+.gnospedia-create-wiki-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Hero Section */
+.gnospedia-hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 4em 2em;
+    border-radius: 12px;
+    margin-bottom: 3em;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.gnospedia-hero-title {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.gnospedia-hero-subtitle {
+    font-size: 1.3em;
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Categories Section */
+.gnospedia-categories {
+    margin-bottom: 3em;
+}
+
+.gnospedia-categories h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 1em;
+    font-weight: 600;
+}
+
+.gnospedia-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5em;
+    margin: 2em 0;
+}
+
+.gnospedia-category-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 2em;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.gnospedia-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.gnospedia-category-card:hover::before {
+    left: 100%;
+}
+
+.gnospedia-category-card:hover {
+    border-color: #667eea;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15);
+}
+
+.gnospedia-category-card.selected {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+}
+
+.category-icon {
+    font-size: 4em;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+.category-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0.5em 0;
+    color: inherit;
+}
+
+.category-description {
+    font-size: 1em;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Create Form */
+.gnospedia-create-form {
+    background: white;
+    border-radius: 12px;
+    padding: 3em;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+    display: none;
+}
+
+.gnospedia-create-form.show {
+    display: block;
+    animation: slideUp 0.5s ease-out;
+}
+
+.gnospedia-create-form h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 1.5em;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 2em;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 1em;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+.subdomain-input {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.subdomain-input:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.subdomain-input input {
+    border: none !important;
+    flex: 1;
+    margin: 0;
+    box-shadow: none !important;
+}
+
+.subdomain-suffix {
+    background: #f8f9fa;
+    padding: 1em;
+    color: #6c757d;
+    font-weight: 500;
+    border-left: 1px solid #e9ecef;
+}
+
+.form-help {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+.gnospedia-create-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1.2em 3em;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2em auto 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.gnospedia-create-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.gnospedia-create-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Success message */
+.gnospedia-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 3em;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3);
+}
+
+.gnospedia-success h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: white;
+}
+
+.gnospedia-success p {
+    font-size: 1.2em;
+    margin: 1em 0;
+    opacity: 0.9;
+}
+
+.gnospedia-visit-button {
+    display: inline-block;
+    background: white;
+    color: #28a745;
+    padding: 1em 2em;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.gnospedia-visit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    color: #28a745;
+}
+
+/* Error message */
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1em;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    margin: 1em 0;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .gnospedia-hero-section {
+        padding: 2em 1em;
+    }
+    
+    .gnospedia-hero-title {
+        font-size: 2.5em;
+    }
+    
+    .gnospedia-category-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+    
+    .gnospedia-create-form {
+        padding: 1.5em;
+        margin: 1em;
+    }
+    
+    .subdomain-input {
+        flex-direction: column;
+    }
+    
+    .subdomain-suffix {
+        border-left: none;
+        border-top: 1px solid #e9ecef;
+        text-align: center;
+    }
+}

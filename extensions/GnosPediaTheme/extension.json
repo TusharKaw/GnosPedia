@@ -1,0 +1,66 @@
+{
+	"name": "GnosPediaTheme",
+	"version": "1.0.0",
+	"author": [
+		"GnosPedia Team"
+	],
+	"url": "https://github.com/gnospedia/theme",
+	"descriptionmsg": "gnospediatheme-desc",
+	"license-name": "GPL-3.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.44.0"
+	},
+	"MessagesDirs": {
+		"GnosPediaTheme": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"BeforePageDisplay": "GnosPediaTheme\\Hooks::onBeforePageDisplay",
+		"SkinTemplateNavigation::Universal": "GnosPediaTheme\\Hooks::onSkinTemplateNavigationUniversal"
+	},
+	"AutoloadNamespaces": {
+		"GnosPediaTheme\\": "includes/"
+	},
+	"ResourceModules": {
+		"ext.gnospedia.styles": {
+			"styles": [
+				"css/gnospedia.css"
+			]
+		},
+		"ext.gnospedia.createwiki": {
+			"scripts": [
+				"js/createwiki.js"
+			],
+			"styles": [
+				"css/createwiki.css"
+			],
+			"dependencies": [
+				"jquery",
+				"mediawiki.api"
+			]
+		}
+	},
+	"SpecialPages": {
+		"StartAWiki": "GnosPediaTheme\\SpecialStartAWiki",
+		"WikiFarmStats": "GnosPediaTheme\\SpecialWikiFarmStats",
+		"WikiFarmDashboard": "GnosPediaTheme\\SpecialWikiFarmDashboard"
+	},
+	"Aliases": {
+		"StartAWiki": [
+			"Start a Wiki",
+			"CreateWiki",
+			"NewWiki"
+		],
+		"WikiFarmStats": [
+			"FarmStats",
+			"WikiStats"
+		],
+		"WikiFarmDashboard": [
+			"FarmDashboard",
+			"WikiDashboard"
+		]
+	},
+	"manifest_version": 2
+}

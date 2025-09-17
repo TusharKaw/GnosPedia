@@ -1,0 +1,179 @@
+/* GnosPedia Theme - Main Styles */
+
+:root {
+    --gnospedia-primary: #0066cc;
+    --gnospedia-secondary: #f8f9fa;
+    --gnospedia-accent: #28a745;
+    --gnospedia-text: #212529;
+    --gnospedia-border: #dee2e6;
+    --gnospedia-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --gnospedia-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Global enhancements */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header improvements */
+#mw-head {
+    background: var(--gnospedia-gradient);
+    box-shadow: var(--gnospedia-shadow);
+}
+
+#p-logo a {
+    background-size: contain !important;
+}
+
+/* Navigation styling */
+.mw-portlet h3 {
+    background: var(--gnospedia-primary);
+    color: white;
+    padding: 8px 12px;
+    margin: 0;
+    border-radius: 4px 4px 0 0;
+}
+
+.mw-portlet .mw-portlet-body {
+    background: white;
+    border: 1px solid var(--gnospedia-border);
+    border-radius: 0 0 4px 4px;
+    box-shadow: var(--gnospedia-shadow);
+}
+
+/* Content area improvements */
+.mw-body {
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--gnospedia-shadow);
+    margin-top: 1em;
+    padding: 2em;
+}
+
+.mw-body h1.firstHeading {
+    color: var(--gnospedia-primary);
+    border-bottom: 2px solid var(--gnospedia-accent);
+    padding-bottom: 0.5em;
+}
+
+/* Link styling */
+.mw-body a {
+    color: var(--gnospedia-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mw-body a:hover {
+    color: var(--gnospedia-accent);
+    text-decoration: underline;
+}
+
+/* Button improvements */
+.mw-ui-button {
+    background: var(--gnospedia-primary);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: var(--gnospedia-shadow);
+}
+
+.mw-ui-button:hover {
+    background: var(--gnospedia-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Special navigation links */
+.gnospedia-start-wiki-link a {
+    background: var(--gnospedia-accent) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 12px !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: var(--gnospedia-shadow) !important;
+    transition: all 0.2s ease !important;
+}
+
+.gnospedia-start-wiki-link a:hover {
+    background: #218838 !important;
+    transform: translateY(-1px) !important;
+}
+
+.gnospedia-manage-wiki-link a {
+    background: #6c757d !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 15px !important;
+    font-size: 11px !important;
+}
+
+/* Category-specific themes */
+.gnospedia-category-entertainment .mw-body h1,
+.gnospedia-category-entertainment .mw-body h2 {
+    color: #e50914;
+}
+
+.gnospedia-category-gaming .mw-body h1,
+.gnospedia-category-gaming .mw-body h2 {
+    color: #7289da;
+}
+
+.gnospedia-category-literature .mw-body h1,
+.gnospedia-category-literature .mw-body h2 {
+    color: #8b4513;
+}
+
+.gnospedia-category-technology .mw-body h1,
+.gnospedia-category-technology .mw-body h2 {
+    color: #0066cc;
+}
+
+.gnospedia-category-lifestyle .mw-body h1,
+.gnospedia-category-lifestyle .mw-body h2 {
+    color: #ff69b4;
+}
+
+.gnospedia-category-education .mw-body h1,
+.gnospedia-category-education .mw-body h2 {
+    color: #4caf50;
+}
+
+.gnospedia-category-science .mw-body h1,
+.gnospedia-category-science .mw-body h2 {
+    color: #9c27b0;
+}
+
+.gnospedia-category-sports .mw-body h1,
+.gnospedia-category-sports .mw-body h2 {
+    color: #ff5722;
+}
+
+/* Footer improvements */
+#footer {
+    background: var(--gnospedia-secondary);
+    border-top: 1px solid var(--gnospedia-border);
+    margin-top: 2em;
+    padding: 2em 0;
+    text-align: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .mw-body {
+        margin: 0.5em;
+        padding: 1em;
+        border-radius: 4px;
+    }
+    
+    .gnospedia-start-wiki-link a {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+}
