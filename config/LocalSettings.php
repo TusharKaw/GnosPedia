@@ -104,9 +104,19 @@ $wgJobTypeConf['default'] = [
 ];
 
 
-# Shared database table
-# This has no effect unless $wgSharedDB is also set.
-$wgSharedTables[] = "actor";
+# Session and cookie configuration
+$wgCookieDomain = '.localhost';
+$wgCookieSecure = false;
+$wgCookieHttpOnly = true;
+$wgCookieSameSite = 'Lax';
+
+# Session configuration
+$wgSessionCacheType = CACHE_NONE;
+$wgSessionsInObjectCache = false;
+
+# Disable session hijacking protection for development
+$wgCheckUserLogs = false;
+$wgCheckUserLogsRestricted = false;
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_NONE;

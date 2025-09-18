@@ -10,6 +10,16 @@ $wgDBname = $wikiID . '_wiki';
 $wgDBtype = 'sqlite';
 $wgSQLiteDataDir = __DIR__ . '/../cache/wikis';
 
+# Session and cookie configuration for subdomain wikis
+$wgCookieDomain = '.localhost';
+$wgCookieSecure = false;
+$wgCookieHttpOnly = true;
+$wgCookieSameSite = 'Lax';
+
+# Session configuration
+$wgSessionCacheType = CACHE_NONE;
+$wgSessionsInObjectCache = false;
+
 # Set wiki-specific site name
 $wgSitename = ucfirst($wikiID) . ' Wiki';
 $wgMetaNamespace = ucfirst($wikiID);
@@ -46,5 +56,10 @@ $wgManageWiki = [
 
 # Permissions for subdomain wikis
 $wgGroupPermissions['user']['createwiki'] = false; // Only main wiki can create new wikis
+$wgGroupPermissions['user']['read'] = true;
+$wgGroupPermissions['user']['edit'] = true;
+$wgGroupPermissions['user']['createpage'] = true;
+$wgGroupPermissions['user']['createtalk'] = true;
+$wgGroupPermissions['user']['writeapi'] = true;
 $wgGroupPermissions['sysop']['managewiki'] = true;
 $wgGroupPermissions['bureaucrat']['managewiki'] = true;

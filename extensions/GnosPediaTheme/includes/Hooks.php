@@ -158,3 +158,4 @@ class Hooks implements BeforePageDisplayHook, SkinTemplateNavigation__UniversalH
         return $user && ($user->isAllowed('managewiki') || $user->isAllowed('sysop'));
     }
 }
+

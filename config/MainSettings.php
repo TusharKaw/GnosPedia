@@ -68,3 +68,4 @@ $wgCreateWikiLimits = [
     'autoconfirmed' => 5,  // Autoconfirmed users can create 5 wikis
     'wikifarm-admin' => 50  // Farm admins can create 50 wikis
 ];
+

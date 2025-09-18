@@ -611,3 +611,4 @@ class SpecialWikiFarmDashboard extends SpecialPage {
         ";
     }
 }
+

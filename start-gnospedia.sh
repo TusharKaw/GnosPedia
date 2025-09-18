@@ -21,7 +21,7 @@ SERVER_PID=$!
 sleep 3
 
 # Test if server is running
-if curl -s -f http://localhost:4000 > /dev/null; then
+if curl -s -f -I http://localhost:4000 | grep -q "200 OK"; then
     echo "✅ Server started successfully!"
     echo ""
     echo "🎉 GnosPedia Wiki Farm is now running!"

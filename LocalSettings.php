@@ -25,7 +25,9 @@ $wgMediaWikiFarmCacheDir = __DIR__ . '/cache/farm';
 $wgMediaWikiFarmSyslog = true;
 $wgMediaWikiFarmLogFile = __DIR__ . '/cache/farm.log';
 
-# MediaWikiFarm will handle CreateWiki configuration automatically
+# CreateWiki configuration
+$wgGroupPermissions['user']['createwiki'] = true;
+$wgGroupPermissions['user']['requestwiki'] = true;
 
 # MediaWikiFarm will handle ManageWiki configuration automatically
 
