@@ -25,3 +25,12 @@ main:
   config:
     - file: 'MainSettings.php'
       executable: true
+      
+# Sample wiki configuration
+sample:
+  server: 'sample.localhost:4000'
+  suffix: 'wiki'
+  wikiID: 'sample'
+  config:
+    - file: 'FarmSettings.php'
+      executable: true

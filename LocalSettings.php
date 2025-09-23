@@ -15,8 +15,9 @@ require_once __DIR__ . '/config/LocalSettings.php';
 
 # Load the farm extensions (enabling in correct order)
 wfLoadExtension('MediaWikiFarm');
-wfLoadExtension('CreateWiki');
-wfLoadExtension('ManageWiki');
+// Temporarily disable problematic extensions
+// wfLoadExtension('CreateWiki');
+// wfLoadExtension('ManageWiki');
 wfLoadExtension('GnosPediaTheme');
 
 # MediaWikiFarm configuration
@@ -28,6 +29,9 @@ $wgMediaWikiFarmLogFile = __DIR__ . '/cache/farm.log';
 # MediaWikiFarm will handle CreateWiki configuration automatically
 
 # MediaWikiFarm will handle ManageWiki configuration automatically
+
+# Load database configuration
+require_once __DIR__ . '/config/DatabaseSettings.php';
 
 # Enhanced main page for main wiki
 $wgMainPageIsDomainRoot = true;
