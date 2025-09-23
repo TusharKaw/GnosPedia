@@ -1,0 +1,214 @@
+<?php
+/**
+ * GnosPedia Wiki Farm - LocalSettings.php
+ */
+
+# Protect against web entry
+if ( !defined( 'MEDIAWIKI' ) ) {
+    exit;
+}
+
+# Define MW_ENTRY_POINT if not already defined
+if ( !defined( 'MW_ENTRY_POINT' ) ) {
+    define( 'MW_ENTRY_POINT', 'index' );
+}
+
+# Basic MediaWiki configuration
+$wgSitename = "GnosPedia";
+$wgMetaNamespace = "GnosPedia";
+
+## The URL base path to the directory containing the wiki;
+$wgScriptPath = "";
+
+## The protocol and server name to use in fully-qualified URLs
+$wgServer = "http://localhost:4000";
+
+## The URL path to static resources (images, scripts, etc.)
+$wgResourceBasePath = $wgScriptPath;
+
+## The URL paths to the logo.
+$wgLogos = [
+    '1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+    'icon' => "$wgResourceBasePath/resources/assets/change-your-logo-icon.svg",
+];
+
+$wgEnableEmail = true;
+$wgEnableUserEmail = true;
+
+$wgEmergencyContact = "";
+$wgPasswordSender = "";
+
+$wgEnotifUserTalk = false;
+$wgEnotifWatchlist = false;
+$wgEmailAuthentication = true;
+
+## Database settings
+$wgDBtype = "sqlite";
+$wgDBserver = "";
+$wgDBname = "my_wiki_main";
+$wgDBuser = "";
+$wgDBpassword = "";
+
+# SQLite-specific settings
+$wgSQLiteDataDir = "cache/wikis/";
+
+## Shared memory settings
+$wgMainCacheType = 'none';
+$wgMemCachedServers = [];
+
+## To enable image uploads
+$wgEnableUploads = false;
+
+# InstantCommons
+$wgUseInstantCommons = false;
+
+# Pingback
+$wgPingback = false;
+
+# Site language code
+$wgLanguageCode = "en";
+
+# Time zone
+$wgLocaltimezone = "UTC";
+
+$wgSecretKey = "faaa92022a749b43b0d56ac6e7657e0cced85ec18b2df22e3e1a07621419d631";
+
+# Changing this will log out all existing sessions.
+$wgAuthenticationTokenVersion = "1";
+
+# Site upgrade key
+$wgUpgradeKey = "13136e1cecb04e7a";
+
+$wgRightsPage = "";
+$wgRightsUrl = "";
+$wgRightsText = "";
+$wgRightsIcon = "";
+
+# Path to the GNU diff3 utility
+$wgDiff3 = "";
+
+## Default skin
+$wgDefaultSkin = "vector-2022";
+
+# Enabled skins
+wfLoadSkin( 'MinervaNeue' );
+wfLoadSkin( 'MonoBook' );
+wfLoadSkin( 'Timeless' );
+wfLoadSkin( 'Vector' );
+
+# Load essential extensions (temporarily disabled for initial setup)
+# wfLoadExtension('CreateWiki');
+# wfLoadExtension('ManageWiki');
+wfLoadExtension('GnosPediaTheme');
+
+# Enable Special:CreateWiki (temporarily disabled for initial setup)
+# $wgCreateWikiGlobalWiki = 'my_wiki_main';
+# $wgCreateWikiDatabase = 'my_wiki_$1';
+# $wgCreateWikiSubdomain = '$1.localhost';
+# $wgCreateWikiUsePrivateWikis = false;
+# $wgCreateWikiDisableCreateWiki = false;
+# $wgCreateWikiDisableManageWiki = false;
+
+# ManageWiki configuration (temporarily disabled for initial setup)
+# $wgManageWikiPermissionsManagement = true;
+# $wgManageWikiExtensions = true;
+# $wgManageWikiSettings = true;
+
+# Set logo
+$wgLogo = "$wgScriptPath/resources/assets/wiki.png";
+
+# Set favicon
+$wgFavicon = "$wgScriptPath/resources/assets/favicon.ico";
+
+# Enhanced main page for main wiki
+$wgMainPageIsDomainRoot = true;
+
+# Add a simple "Start a Wiki" link to the main page
+$wgHooks['SkinTemplateNavigation::Universal'][] = function($sktemplate, &$links) {
+    $links['namespaces']['start-wiki'] = [
+        'text' => 'Start a Wiki',
+        'href' => '/index.php?title=Special:CreateAccount&returnto=Start+a+Wiki',
+        'class' => 'gnospedia-start-wiki-link'
+    ];
+};
+
+# Enhanced upload settings
+$wgEnableUploads = true;
+$wgUseImageMagick = false; // Use GD instead for simplicity
+$wgGenerateThumbnailOnParse = true;
+$wgAllowExternalImages = true;
+$wgAllowImageTag = true;
+
+# File upload restrictions
+$wgFileExtensions = [
+    'png', 'gif', 'jpg', 'jpeg', 'webp', 'svg',
+    'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx',
+    'txt', 'rtf', 'odt', 'ods', 'odp',
+    'mp3', 'wav', 'ogg', 'mp4', 'webm', 'ogv'
+];
+
+$wgMaxUploadSize = 50 * 1024 * 1024; // 50MB
+
+# Performance optimizations
+$wgMainCacheType = CACHE_ACCEL;
+$wgMemCachedServers = [];
+$wgUseLocalMessageCache = true;
+$wgCacheDirectory = __DIR__ . '/cache';
+
+# Security enhancements
+$wgAllowUserJs = false;
+$wgAllowUserCss = true;
+$wgRestrictDisplayTitle = false;
+$wgRawHtml = false;
+
+# Add custom CSS for GnosPedia styling
+$wgHooks['BeforePageDisplay'][] = function($out, $skin) {
+    $out->addInlineStyle('
+        .gnospedia-start-wiki-link a {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            font-size: 12px !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            transition: all 0.2s ease !important;
+            text-decoration: none !important;
+        }
+        
+        .gnospedia-start-wiki-link a:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+        }
+        
+        .mw-body h1.firstHeading {
+            color: #667eea;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 0.5em;
+        }
+        
+        .mw-body a {
+            color: #667eea;
+        }
+        
+        .mw-body a:hover {
+            color: #764ba2;
+        }
+        
+        #mw-head {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .mw-body {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 1em;
+            padding: 2em;
+        }
+    ');
+};

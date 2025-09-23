@@ -7,9 +7,9 @@
 $wgSitename = "Sample Wiki";
 $wgMetaNamespace = "Sample_Wiki";
 
-# Disable CreateWiki and ManageWiki to avoid database errors
-$wgCreateWikiDisableManageWiki = true;
-$wgCreateWikiDisableCreateWiki = true;
+# Enable CreateWiki and ManageWiki
+$wgCreateWikiDisableManageWiki = false;
+$wgCreateWikiDisableCreateWiki = false;
 
 # Basic permissions
 $wgGroupPermissions['*']['edit'] = false;
