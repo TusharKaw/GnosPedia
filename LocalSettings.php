@@ -11,6 +11,9 @@
 # https://www.mediawiki.org/wiki/Manual:Configuration_settings
 
 # Protect against web entry
+
+use phpDocumentor\Reflection\PseudoTypes\True_;
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
@@ -63,12 +66,19 @@ $wgEmailAuthentication = true;
 ## Database settings
 $wgDBtype = "sqlite";
 $wgDBserver = "";
-$wgDBname = "my_wiki_main";
-$wgDBuser = "";
-$wgDBpassword = "";
+
+# Use relative paths for SQLite databases
+$wgDBname = 'my_wiki';
+$wgDBuser = '';
+$wgDBpassword = '';
 
 # SQLite-specific settings
-$wgSQLiteDataDir = "$IP/data";
+$wgSQLiteDataDir = __DIR__ . '/data';
+
+# Ensure the data directory exists and is writable
+if ( !is_writable( $wgSQLiteDataDir ) ) {
+    die( "Error: The data directory ({$wgSQLiteDataDir}) must be writable by the web server." );
+}
 $wgObjectCaches[CACHE_DB] = [
 	'class' => SqlBagOStuff::class,
 	'loggroup' => 'SQLBagOStuff',
@@ -137,7 +147,11 @@ $wgLocaltimezone = "UTC";
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publicly accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
+$wgCacheDirectory = "$IP/cache";
+
+## Use file-based localisation cache to avoid SQLite l10n_cache issues in dev
+$wgLocalisationCacheConf['store'] = 'array';
+$wgLocalisationCacheConf['storeDirectory'] = $wgCacheDirectory;
 
 $wgSecretKey = "3ac97a75ef137a878ddbbd165976ed71b71b830fc0299889efe6f86156eee467";
 
@@ -161,7 +175,7 @@ $wgDiff3 = "";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, e.g. 'vector' or 'monobook':
-$wgDefaultSkin = "vector-2022";
+$wgDefaultSkin = "evelution";
 
 # Enabled skins.
 # The following skins were automatically enabled:
@@ -170,6 +184,7 @@ wfLoadSkin( 'MinervaNeue' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Vector' );
+wfLoadSkin( 'Evelution' );
 
 
 # End of automatically generated settings.
@@ -184,6 +199,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 ini_set('error_log', "$IP/logs/error.log");
+ini_set( 'memory_limit', '512M' );
 
 # Load CreateWiki and ManageWiki extensions for wiki farm functionality
 wfLoadExtension('CreateWiki');
@@ -306,3 +322,18 @@ $wgVirtualDomainsMapping = [
     'virtual-createwiki-central' => [ 'db' => 'my_wiki_main' ]
 ];
 
+wfLoadExtension( 'Echo' );
+wfLoadExtension( 'AbuseFilter' );
+wfLoadExtension( 'Gadgets' );
+wfLoadExtension( 'Translate' );
+wfLoadExtension( 'CreatePage' );
+wfLoadExtension( 'ContactPage' );
+wfLoadExtension( 'UniversalLanguageSelector' );
+
+$wgEvelutionShowPageTools = true;
+$wgEvelutionDisableRightRail = true;
+$wgEvelutionForceFullWidth = false;
+$wgEvelutionChangeMessageBoxesToBanners	= true;
+
+$wgGroupPermissions['bureaucrat']['userrights'] = true;
+$wgGroupPermissions['*']['bureaucrat'] = true;
