@@ -206,7 +206,7 @@ wfLoadExtension('CreateWiki');
 wfLoadExtension('ManageWiki');
 
 # CreateWiki configuration
-$wgCreateWikiGlobalWiki = 'my_wiki_main';
+$wgCreateWikiGlobalWiki = 'my_wiki';
 $wgCreateWikiDatabase = 'my_wiki_$1';
 $wgCreateWikiSubdomain = '$1.localhost:4000';
 $wgCreateWikiUsePrivateWikis = false;
@@ -318,8 +318,8 @@ $wgImageMagickConvertCommand = "/opt/homebrew/bin/convert";
 # Simple virtual domain mapping for CreateWiki
 # CreateWiki central operations should always use the main database
 $wgVirtualDomainsMapping = [
-    'virtual-createwiki' => [ 'db' => 'my_wiki_main' ],
-    'virtual-createwiki-central' => [ 'db' => 'my_wiki_main' ]
+    'virtual-createwiki' => [ 'db' => 'my_wiki' ],
+    'virtual-createwiki-central' => [ 'db' => 'my_wiki' ]
 ];
 
 wfLoadExtension( 'Echo' );
