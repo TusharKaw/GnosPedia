@@ -7,3 +7,14 @@
 # Temporary images
 images/tmp/
 
+# IDE files
+.vscode/
+.idea/
+.phpstorm.meta.php
+*.swp
+*.swo
+
+# Cache and logs
+cache/
+logs/
+

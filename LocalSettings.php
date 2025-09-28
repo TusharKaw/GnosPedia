@@ -337,3 +337,7 @@ $wgEvelutionChangeMessageBoxesToBanners	= true;
 
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 $wgGroupPermissions['*']['bureaucrat'] = true;
+$wgGroupPermissions['*']['sysop'] = true;
+$wgGroupPermissions['*']['editinterface'] = true;
+$wgGroupPermissions['*']['editsitecss'] = true;
+$wgGroupPermissions['*']['editsitejs'] = true;

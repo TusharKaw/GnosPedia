@@ -1,0 +1,113 @@
+/* Custom CSS to simplify Evolution skin and make it more Fandom-like */
+
+/* Hide the taskbar/sidebar completely */
+.evelution-taskbar,
+.evelution-sidebar {
+    display: none !important;
+}
+
+/* Hide Discord module */
+.discord-module {
+    display: none !important;
+}
+
+/* Hide activity module */
+.activity-module {
+    display: none !important;
+}
+
+/* Hide theme designer tools */
+.theme-designer,
+[designer-on] {
+    display: none !important;
+}
+
+/* Simplify the navigation dropdown */
+.cpe-dropdown__toggle-chevron {
+    display: none !important;
+}
+
+/* Hide decorative elements */
+.lunalevit,
+.background .lunalevit {
+    display: none !important;
+}
+
+/* Remove excessive padding/margins caused by hidden taskbar */
+body {
+    --left-padding: 0px !important;
+    --bottom-padding: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+/* Adjust main content area to fill the space */
+.evelution-page {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Hide company branding */
+.company.link {
+    display: none !important;
+}
+
+/* Simplify header */
+.evelution-header {
+    background: var(--canvas-background-color) !important;
+    border-bottom: 1px solid var(--inactive-text-background-color) !important;
+}
+
+/* Hide tools dropdown in taskbar area */
+.cpe-taskbar-tools {
+    display: none !important;
+}
+
+/* Make navigation cleaner */
+.local-navigation__button .edit-button {
+    display: none !important;
+}
+
+/* Hide rail module headers decorations */
+.rail-module__header .lunalevit {
+    display: none !important;
+}
+
+/* Simplify module styling */
+.evelution-module {
+    border: 1px solid var(--inactive-text-background-color) !important;
+    border-radius: 4px !important;
+    background: var(--canvas-background-color) !important;
+}
+
+/* Hide excessive icons and decorations */
+.material-icons.focused-dropdown-off,
+.material-icons.focused-dropdown-on {
+    font-size: 18px !important;
+}
+
+/* Clean up sticky modules */
+.evelution-sticky-modules {
+    display: none !important;
+}
+
+/* Ensure content takes full width when sidebar is hidden */
+@media screen and (min-width: 1280px) {
+    .evelution-page__content {
+        max-width: none !important;
+        margin-right: 0 !important;
+    }
+    
+    .evelution-article {
+        max-width: 100% !important;
+    }
+}
+
+/* Hide any remaining taskbar elements */
+.full-toolbar {
+    display: none !important;
+}
+
+/* Clean footer */
+.evelution-footer .company {
+    display: none !important;
+}
