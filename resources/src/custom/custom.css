@@ -1,0 +1,169 @@
+/* Change article text color to white */
+.mw-parser-output,
+.mw-parser-output p,
+.mw-parser-output li,
+.mw-parser-output dd,
+.mw-parser-output dt,
+.mw-parser-output td,
+.mw-parser-output th,
+.mw-parser-output .mw-headline,
+.mw-parser-output h1,
+.mw-parser-output h2,
+.mw-parser-output h3,
+.mw-parser-output h4,
+.mw-parser-output h5,
+.mw-parser-output h6,
+.firstHeading,
+#firstHeading,
+.mw-first-heading,
+.mw-page-title,
+.mw-page-title-main,
+.mw-page-title-namespace,
+.mw-page-title-separator,
+.mw-page-title-main,
+/* OOUI elements */
+.oo-ui-labelElement-label,
+.oo-ui-iconElement-icon,
+.oo-ui-iconElement-noIcon,
+.oo-ui-widget,
+.oo-ui-widget.oo-ui-widget-enabled,
+.oo-ui-labelElement,
+.oo-ui-labelElement > .oo-ui-labelElement-label,
+.oo-ui-iconElement > .oo-ui-iconElement-icon,
+.oo-ui-iconElement > .oo-ui-iconElement-noIcon,
+/* Wiki source text */
+.mw-body-header .mw-body-header-legend,
+.mw-body-header .mw-body-header-legend a,
+.mw-body-header .mw-body-header-legend a:visited,
+/* Page description */
+.mw-body-header .mw-page-title-description,
+/* Page actions */
+#p-views .vector-menu-heading,
+#p-views .vector-menu-content,
+#p-views .vector-menu-content-list,
+#p-views .vector-menu-content-list li,
+#p-views .vector-menu-content-list li a,
+/* TOC */
+.toc,
+.tocnumber,
+.toctext,
+/* Edit section links */
+.mw-editsection,
+.mw-editsection a,
+.mw-editsection a:visited {
+    color: #ffffff !important;
+}
+
+/* Element labels and other special elements */
+.mw-parser-output .infobox-label,
+.mw-parser-output .infobox-data,
+.mw-parser-output .infobox-above,
+.mw-parser-output .infobox-title,
+.mw-parser-output .hatnote,
+.mw-parser-output .dablink,
+.mw-parser-output .metadata,
+.mw-parser-output .navbox,
+.mw-parser-output .navbox-title,
+.mw-parser-output .navbox-group,
+.mw-parser-output .navbox-abovebelow,
+.mw-parser-output .navbox-subgroup,
+.mw-parser-output .navbox-title,
+/* OOUI widgets */
+.oo-ui-buttonElement-button,
+.oo-ui-buttonElement-button > .oo-ui-iconElement-icon,
+.oo-ui-buttonElement-button > .oo-ui-labelElement-label,
+.oo-ui-buttonElement-framed > .oo-ui-labelElement-label,
+.oo-ui-buttonElement-frameless > .oo-ui-labelElement-label,
+.oo-ui-buttonElement-frameless.oo-ui-labelElement > .oo-ui-labelElement-label,
+.oo-ui-buttonElement-frameless.oo-ui-iconElement .oo-ui-iconElement-icon,
+.oo-ui-buttonElement-frameless.oo-ui-iconElement .oo-ui-labelElement-label,
+/* Wiki source and other text elements */
+.mw-body-header .mw-body-header-legend,
+.mw-body-header .mw-body-header-legend a,
+.mw-body-header .mw-page-title-description,
+/* Page actions and navigation */
+.vector-page-toolbar,
+.vector-page-toolbar-container,
+.vector-page-toolbar .vector-menu-content,
+.vector-page-toolbar .vector-menu-content-list,
+.vector-page-toolbar .vector-menu-content-list li,
+.vector-page-toolbar .vector-menu-content-list li a {
+    color: #ffffff !important;
+}
+
+/* Fix for links to ensure they remain visible */
+.mw-parser-output a {
+    color: #a7d7f9 !important;
+}
+
+.mw-parser-output a:visited {
+    color: #d7a7f9 !important;
+}
+
+.mw-parser-output a.new {
+    color: #ff6e6e !important;
+}
+
+/* Make sure tables and their content are visible */
+.mw-parser-output table.wikitable,
+.mw-parser-output table.wikitable > tr > th,
+.mw-parser-output table.wikitable > tr > td,
+.mw-parser-output table.wikitable > * > tr > th,
+.mw-parser-output table.wikitable > * > tr > td,
+/* OOUI dropdowns and inputs */
+.oo-ui-dropdownWidget-handle,
+.oo-ui-dropdownWidget-handle .oo-ui-labelElement-label,
+.oo-ui-inputWidget-input,
+.oo-ui-textInputWidget .oo-ui-inputWidget-input,
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-inputWidget-input,
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-iconElement-icon,
+.oo-ui-textInputWidget.oo-ui-widget-enabled .oo-ui-indicatorElement-indicator,
+/* Page actions dropdown */
+.vector-page-toolbar .vector-menu-dropdown .vector-menu-heading,
+.vector-page-toolbar .vector-menu-dropdown .vector-menu-content,
+.vector-page-toolbar .vector-menu-dropdown .vector-menu-content-list,
+.vector-page-toolbar .vector-menu-dropdown .vector-menu-content-list li,
+.vector-page-toolbar .vector-menu-dropdown .vector-menu-content-list li a {
+    border-color: #666666 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+}
+
+/* Fix for code blocks */
+.mw-parser-output pre,
+.mw-parser-output code,
+.mw-parser-output tt,
+.mw-parser-output kbd,
+.mw-parser-output samp {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: #ffffff !important;
+    border-color: #666666 !important;
+}
+
+/* Override #2c3e50 with white */
+:root {
+    --theme-primary-color: #ffffff !important;
+    --theme-text-color: #ffffff !important;
+}
+
+.theme-dark-preview,
+.smw-indicator-accordion-tab-content,
+.smw-indicator-accordion-tab-header {
+    color: #ffffff !important;
+    background: #ffffff !important;
+}
+
+/* Ensure background colors don't make text unreadable */
+[style*="#2c3e50"],
+[style*="#2C3E50"] {
+    color: #ffffff !important;
+    background-color: transparent !important;
+}
+
+/* Hide Powered by GnosPedia in footer */
+.evelution-footer .powered-by,
+.footer__container .powered-by,
+#footer-poweredby,
+.footer-info {
+    display: none !important;
+}
