@@ -221,8 +221,8 @@ wfLoadExtension('CreateWiki');
 wfLoadExtension('ManageWiki');
 
 # CreateWiki configuration
-$wgCreateWikiGlobalWiki = 'my_wiki';
-$wgCreateWikiDatabase = 'my_wiki_$1';
+$wgCreateWikiGlobalWiki = 'azwiki';
+$wgCreateWikiDatabase = '$1wiki';
 $wgCreateWikiSubdomain = '$1.localhost:4000';
 $wgCreateWikiUsePrivateWikis = false;
 $wgCreateWikiDisableCreateWiki = false;
@@ -231,6 +231,9 @@ $wgCreateWikiCacheDirectory = "$IP/cache/createwiki";
 $wgCreateWikiCacheType = CACHE_NONE; // Disable caching
 # Disable database clusters for simple SQLite setup
 $wgCreateWikiDatabaseClusters = [];
+
+# Set this wiki as the central wiki
+$wgCreateWikiCentralWiki = true;
 
 # Configure SQL files for new wiki creation
 $wgCreateWikiSQLFiles = [
@@ -341,8 +344,8 @@ $wgImageMagickConvertCommand = "/opt/homebrew/bin/convert";
 # Simple virtual domain mapping for CreateWiki
 # CreateWiki central operations should always use the main database
 $wgVirtualDomainsMapping = [
-    'virtual-createwiki' => [ 'db' => 'my_wiki' ],
-    'virtual-createwiki-central' => [ 'db' => 'my_wiki' ]
+    'virtual-createwiki' => [ 'db' => 'azwiki' ],
+    'virtual-createwiki-central' => [ 'db' => 'azwiki' ]
 ];
 
 // Function to ensure AbuseFilter tables exist
