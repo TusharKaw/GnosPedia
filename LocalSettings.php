@@ -13,6 +13,7 @@
 # Protect against web entry
 
 use phpDocumentor\Reflection\PseudoTypes\True_;
+use MediaWiki\MediaWikiServices;
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
@@ -68,7 +69,7 @@ $wgDBtype = "sqlite";
 $wgDBserver = "";
 
 # Use relative paths for SQLite databases
-$wgDBname = 'my_wiki';
+$wgDBname = 'azwiki';
 $wgDBuser = '';
 $wgDBpassword = '';
 
@@ -171,14 +172,28 @@ $wgRightsText = "";
 $wgRightsIcon = "";
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
-$wgDiff3 = "";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, e.g. 'vector' or 'monobook':
 $wgDefaultSkin = "evelution";
 
-# Enabled skins.
-# The following skins were automatically enabled:
+# Enable UniversalLanguageSelector extension (required by Translate)
+wfLoadExtension( 'UniversalLanguageSelector' );
+
+# Enable Translate extension
+wfLoadExtension( 'Translate' );
+
+# Basic Translate extension configuration
+$wgTranslateDocumentationLanguageCode = 'en';
+$wgEnablePageTranslation = true;
+$wgGroupPermissions['user']['translate'] = true;
+$wgGroupPermissions['sysop']['pagetranslation'] = true;
+
+# Basic UniversalLanguageSelector configuration
+$wgULSEnable = true;
+$wgULSAnonCanChangeLanguage = true;
+
+# Enabled skins:
 wfLoadSkin( 'Citizen' );
 wfLoadSkin( 'MinervaNeue' );
 wfLoadSkin( 'MonoBook' );
@@ -244,14 +259,22 @@ if (isset($_SERVER['HTTP_HOST'])) {
     if (preg_match('/^([a-z0-9-]+)\.localhost:4000$/', $host, $matches)) {
         $subdomain = $matches[1];
         if ($subdomain !== 'www' && $subdomain !== 'main') {
-            // CreateWiki uses subdomain + "wiki" suffix (e.g., "narutowiki")
-            $wikiDbName = $subdomain . 'wiki';
-            $dbFile = "$IP/data/{$wikiDbName}.sqlite";
+            // Check for both naming patterns: 'azwiki' and 'my_wiki_az'
+            $wikiDbName1 = $subdomain . 'wiki';  // e.g. azwiki
+            $wikiDbName2 = 'my_wiki_' . $subdomain;  // e.g. my_wiki_az
             
-            // Check if the wiki database exists
-            if (file_exists($dbFile) && filesize($dbFile) > 0) {
-                $wgDBname = $wikiDbName;
+            $dbFile1 = "$IP/data/{$wikiDbName1}.sqlite";
+            $dbFile2 = "$IP/data/{$wikiDbName2}.sqlite";
+            
+                        // Check which database file exists
+            if (file_exists($dbFile1) && filesize($dbFile1) > 0) {
+                $wgDBname = $wikiDbName1;
                 $wgSitename = ucfirst($subdomain) . ' Wiki';
+                $currentDbFile = $dbFile1;
+            } elseif (file_exists($dbFile2) && filesize($dbFile2) > 0) {
+                $wgDBname = $wikiDbName2;
+                $wgSitename = ucfirst($subdomain) . ' Wiki';
+                $currentDbFile = $dbFile2;
             } else {
                 // Wiki doesn't exist, show error
                 if (!defined('MW_NO_OUTPUT_BUFFER')) {
@@ -321,6 +344,49 @@ $wgVirtualDomainsMapping = [
     'virtual-createwiki' => [ 'db' => 'my_wiki' ],
     'virtual-createwiki-central' => [ 'db' => 'my_wiki' ]
 ];
+
+// Function to ensure AbuseFilter tables exist
+function ensureAbuseFilterTables($dbName, $dbFile) {
+    global $IP;
+    
+    // Skip if we've already checked this database in this request
+    static $checkedDbs = [];
+    if (in_array($dbName, $checkedDbs)) {
+        return;
+    }
+    $checkedDbs[] = $dbName;
+    
+    // Skip if we're in maintenance mode or the database file doesn't exist
+    if (defined('MW_NO_SESSION') || !file_exists($dbFile)) {
+        return;
+    }
+    
+    // Check if abuse_filter table exists
+    $db = new SQLite3($dbFile);
+    $result = $db->query("SELECT name FROM sqlite_master WHERE type='table' AND name='abuse_filter'");
+    $tableExists = $result->fetchArray() !== false;
+    
+    if (!$tableExists) {
+        // If the table doesn't exist, run the update script
+        $cmd = sprintf(
+            'cd %s && php maintenance/run.php ensureAbuseFilterTables --wiki=%s',
+            escapeshellarg($IP),
+            escapeshellarg($dbName)
+        );
+        exec($cmd, $output, $returnVar);
+        
+        if ($returnVar !== 0) {
+            error_log("Failed to ensure AbuseFilter tables for $dbName: " . implode("\n", $output));
+        }
+    }
+    
+    $db->close();
+}
+
+// Call the function to ensure tables exist for the current wiki
+if (isset($currentDbFile) && isset($wgDBname)) {
+    ensureAbuseFilterTables($wgDBname, $currentDbFile);
+}
 
 wfLoadExtension( 'Echo' );
 wfLoadExtension( 'AbuseFilter' );
