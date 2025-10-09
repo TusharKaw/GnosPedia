@@ -132,7 +132,7 @@ $wgMemCachedServers = [];
 ## is writable, then set this to true:
 $wgEnableUploads = false;
 $wgUseImageMagick = true;
-$wgImageMagickConvertCommand = "/opt/homebrew/bin/convert";
+$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = false;
@@ -197,11 +197,11 @@ $wgULSEnable = true;
 $wgULSAnonCanChangeLanguage = true;
 
 # Enabled skins:
- wfLoadSkin( 'Citizen' );
-# wfLoadSkin( 'MinervaNeue' );
-# wfLoadSkin( 'MonoBook' );
-# wfLoadSkin( 'Timeless' );
-# wfLoadSkin( 'Vector' );
+wfLoadSkin( 'Citizen' );
+wfLoadSkin( 'MinervaNeue' );
+wfLoadSkin( 'MonoBook' );
+wfLoadSkin( 'Timeless' );
+wfLoadSkin( 'Vector' );
 wfLoadSkin( 'Evelution' );
 
 
@@ -310,7 +310,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
 # Enable uploads for better wiki functionality
 $wgEnableUploads = true;
 $wgUseImageMagick = true;
-$wgImageMagickConvertCommand = "/opt/homebrew/bin/convert";
+$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # WikiInitialize setup for CreateWiki farm - TEMPORARILY DISABLED FOR TESTING
 # require_once "$IP/extensions/CreateWiki/includes/WikiInitialize.php";
@@ -422,4 +422,3 @@ $wgGroupPermissions['*']['sysop'] = true;
 $wgGroupPermissions['*']['editinterface'] = true;
 $wgGroupPermissions['*']['editsitecss'] = true;
 $wgGroupPermissions['*']['editsitejs'] = true;
-
