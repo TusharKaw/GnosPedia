@@ -18,3 +18,14 @@ images/tmp/
 cache/
 logs/
 
+
+# Local Development Utils
+bin/
+*.ps1
+*.bat
+*.zip
+setup_local_php.ps1
+fix_repos.ps1
+fix_versions.ps1
+fix_versions_v2.ps1
+start_local.bat

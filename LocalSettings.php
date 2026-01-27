@@ -202,7 +202,7 @@ $wgULSAnonCanChangeLanguage = true;
 # wfLoadSkin( 'MonoBook' );
 # wfLoadSkin( 'Timeless' );
 # wfLoadSkin( 'Vector' );
-wfLoadSkin( 'Evelution' );
+# wfLoadSkin( 'Evelution' );
 
 
 # End of automatically generated settings.
