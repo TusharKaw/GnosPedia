@@ -18,8 +18,8 @@ use MediaWiki\Skin\Skin;
 use phpDocumentor\Reflection\PseudoTypes\True_;
 use MediaWiki\MediaWikiServices;
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit;
+if (!defined('MEDIAWIKI')) {
+    exit;
 }
 
 
@@ -51,8 +51,8 @@ $wgResourceBasePath = $wgScriptPath;
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo-icon.svg",
+    '1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+    'icon' => "$wgResourceBasePath/resources/assets/change-your-logo-icon.svg",
 ];
 
 ## UPO means: this is also a user preference option
@@ -80,43 +80,43 @@ $wgDBpassword = '';
 $wgSQLiteDataDir = __DIR__ . '/data';
 
 # Ensure the data directory exists and is writable
-if ( !is_writable( $wgSQLiteDataDir ) ) {
-    die( "Error: The data directory ({$wgSQLiteDataDir}) must be writable by the web server." );
+if (!is_writable($wgSQLiteDataDir)) {
+    die("Error: The data directory ({$wgSQLiteDataDir}) must be writable by the web server.");
 }
 $wgObjectCaches[CACHE_DB] = [
-	'class' => SqlBagOStuff::class,
-	'loggroup' => 'SQLBagOStuff',
-	'server' => [
-		'type' => 'sqlite',
-		'dbname' => 'wikicache',
-		'tablePrefix' => '',
-		'variables' => [ 'synchronous' => 'NORMAL' ],
-		'dbDirectory' => $wgSQLiteDataDir,
-		'trxMode' => 'IMMEDIATE',
-		'flags' => 0
-	]
+    'class' => SqlBagOStuff::class,
+    'loggroup' => 'SQLBagOStuff',
+    'server' => [
+        'type' => 'sqlite',
+        'dbname' => 'wikicache',
+        'tablePrefix' => '',
+        'variables' => ['synchronous' => 'NORMAL'],
+        'dbDirectory' => $wgSQLiteDataDir,
+        'trxMode' => 'IMMEDIATE',
+        'flags' => 0
+    ]
 ];
 $wgLocalisationCacheConf['storeServer'] = [
-	'type' => 'sqlite',
-	'dbname' => "{$wgDBname}_l10n_cache",
-	'tablePrefix' => '',
-	'variables' => [ 'synchronous' => 'NORMAL' ],
-	'dbDirectory' => $wgSQLiteDataDir,
-	'trxMode' => 'IMMEDIATE',
-	'flags' => 0
+    'type' => 'sqlite',
+    'dbname' => "{$wgDBname}_l10n_cache",
+    'tablePrefix' => '',
+    'variables' => ['synchronous' => 'NORMAL'],
+    'dbDirectory' => $wgSQLiteDataDir,
+    'trxMode' => 'IMMEDIATE',
+    'flags' => 0
 ];
 $wgJobTypeConf['default'] = [
-	'class' => 'JobQueueDB',
-	'claimTTL' => 3600,
-	'server' => [
-		'type' => 'sqlite',
-		'dbname' => "{$wgDBname}_jobqueue",
-		'tablePrefix' => '',
-		'variables' => [ 'synchronous' => 'NORMAL' ],
-		'dbDirectory' => $wgSQLiteDataDir,
-		'trxMode' => 'IMMEDIATE',
-		'flags' => 0
-	]
+    'class' => 'JobQueueDB',
+    'claimTTL' => 3600,
+    'server' => [
+        'type' => 'sqlite',
+        'dbname' => "{$wgDBname}_jobqueue",
+        'tablePrefix' => '',
+        'variables' => ['synchronous' => 'NORMAL'],
+        'dbDirectory' => $wgSQLiteDataDir,
+        'trxMode' => 'IMMEDIATE',
+        'flags' => 0
+    ]
 ];
 
 
@@ -181,10 +181,10 @@ $wgRightsIcon = "";
 $wgDefaultSkin = "citizen";
 
 # Enable UniversalLanguageSelector extension (required by Translate)
-wfLoadExtension( 'UniversalLanguageSelector' );
+wfLoadExtension('UniversalLanguageSelector');
 
 # Enable Translate extension
-wfLoadExtension( 'Translate' );
+wfLoadExtension('Translate');
 
 # Basic Translate extension configuration
 $wgTranslateDocumentationLanguageCode = 'en';
@@ -197,7 +197,7 @@ $wgULSEnable = true;
 $wgULSAnonCanChangeLanguage = true;
 
 # Enabled skins:
- wfLoadSkin( 'Citizen' );
+wfLoadSkin('Citizen');
 # wfLoadSkin( 'MinervaNeue' );
 # wfLoadSkin( 'MonoBook' );
 # wfLoadSkin( 'Timeless' );
@@ -217,14 +217,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 ini_set('error_log', "$IP/logs/error.log");
-ini_set( 'memory_limit', '512M' );
+ini_set('memory_limit', '512M');
 
 # Load CreateWiki and ManageWiki extensions for wiki farm functionality
 wfLoadExtension('CreateWiki');
 wfLoadExtension('ManageWiki');
 
 // Load custom CSS
-$wgHooks['BeforePageDisplay'][] = function ( OutputPage $out, Skin $skin ) {
+$wgHooks['BeforePageDisplay'][] = function (OutputPage $out, Skin $skin) {
     $out->addHeadItem(
         'custom-css',
         '<link rel="stylesheet" href="/resources/src/custom/custom.css">'
@@ -277,11 +277,11 @@ if (isset($_SERVER['HTTP_HOST'])) {
             // Check for both naming patterns: 'azwiki' and 'my_wiki_az'
             $wikiDbName1 = $subdomain . 'wiki';  // e.g. azwiki
             $wikiDbName2 = 'my_wiki_' . $subdomain;  // e.g. my_wiki_az
-            
+
             $dbFile1 = "$IP/data/{$wikiDbName1}.sqlite";
             $dbFile2 = "$IP/data/{$wikiDbName2}.sqlite";
-            
-                        // Check which database file exists
+
+            // Check which database file exists
             if (file_exists($dbFile1) && filesize($dbFile1) > 0) {
                 $wgDBname = $wikiDbName1;
                 $wgSitename = ucfirst($subdomain) . ' Wiki';
@@ -356,31 +356,32 @@ $wgImageMagickConvertCommand = "/opt/homebrew/bin/convert";
 # Simple virtual domain mapping for CreateWiki
 # CreateWiki central operations should always use the main database
 $wgVirtualDomainsMapping = [
-    'virtual-createwiki' => [ 'db' => 'azwiki' ],
-    'virtual-createwiki-central' => [ 'db' => 'azwiki' ]
+    'virtual-createwiki' => ['db' => 'azwiki'],
+    'virtual-createwiki-central' => ['db' => 'azwiki']
 ];
 
 // Function to ensure AbuseFilter tables exist
-function ensureAbuseFilterTables($dbName, $dbFile) {
+function ensureAbuseFilterTables($dbName, $dbFile)
+{
     global $IP;
-    
+
     // Skip if we've already checked this database in this request
     static $checkedDbs = [];
     if (in_array($dbName, $checkedDbs)) {
         return;
     }
     $checkedDbs[] = $dbName;
-    
+
     // Skip if we're in maintenance mode or the database file doesn't exist
     if (defined('MW_NO_SESSION') || !file_exists($dbFile)) {
         return;
     }
-    
+
     // Check if abuse_filter table exists
     $db = new SQLite3($dbFile);
     $result = $db->query("SELECT name FROM sqlite_master WHERE type='table' AND name='abuse_filter'");
     $tableExists = $result->fetchArray() !== false;
-    
+
     if (!$tableExists) {
         // If the table doesn't exist, run the update script
         $cmd = sprintf(
@@ -389,12 +390,12 @@ function ensureAbuseFilterTables($dbName, $dbFile) {
             escapeshellarg($dbName)
         );
         exec($cmd, $output, $returnVar);
-        
+
         if ($returnVar !== 0) {
             error_log("Failed to ensure AbuseFilter tables for $dbName: " . implode("\n", $output));
         }
     }
-    
+
     $db->close();
 }
 
@@ -403,18 +404,18 @@ if (isset($currentDbFile) && isset($wgDBname)) {
     ensureAbuseFilterTables($wgDBname, $currentDbFile);
 }
 
-wfLoadExtension( 'Echo' );
-wfLoadExtension( 'AbuseFilter' );
-wfLoadExtension( 'Gadgets' );
-wfLoadExtension( 'Translate' );
-wfLoadExtension( 'CreatePage' );
-wfLoadExtension( 'ContactPage' );
-wfLoadExtension( 'UniversalLanguageSelector' );
+wfLoadExtension('Echo');
+wfLoadExtension('AbuseFilter');
+wfLoadExtension('Gadgets');
+wfLoadExtension('Translate');
+wfLoadExtension('CreatePage');
+wfLoadExtension('ContactPage');
+wfLoadExtension('UniversalLanguageSelector');
 
 $wgEvelutionShowPageTools = true;
 $wgEvelutionDisableRightRail = true;
 $wgEvelutionForceFullWidth = false;
-$wgEvelutionChangeMessageBoxesToBanners	= true;
+$wgEvelutionChangeMessageBoxesToBanners = true;
 
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 $wgGroupPermissions['*']['bureaucrat'] = true;
@@ -422,4 +423,12 @@ $wgGroupPermissions['*']['sysop'] = true;
 $wgGroupPermissions['*']['editinterface'] = true;
 $wgGroupPermissions['*']['editsitecss'] = true;
 $wgGroupPermissions['*']['editsitejs'] = true;
+
+// Enable CORS for Next.js frontend
+$wgCrossSiteAJAXdomains = array('localhost:3000');
+$wgAllowCrossOrigin = true;
+// Allow all origins for development (optional, use specific domain in prod)
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 

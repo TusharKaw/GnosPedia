@@ -751,3 +751,101 @@ Stack trace:
 [28-Sep-2025 08:10:56 UTC] PHP Deprecated:  Premature access to service 'ChronologyProtector' [Called from Wikimedia\Services\ServiceContainer::{closure:/Users/tusharkaw/Downloads/GnosPedia/includes/ServiceWiring.php:765} in /Users/tusharkaw/Downloads/GnosPedia/includes/ServiceWiring.php at line 786] in /Users/tusharkaw/Downloads/GnosPedia/includes/debug/MWDebug.php on line 386
 [28-Sep-2025 08:10:56 UTC] PHP Deprecated:  Premature access to service 'CriticalSectionProvider' [Called from Wikimedia\Services\ServiceContainer::{closure:/Users/tusharkaw/Downloads/GnosPedia/includes/ServiceWiring.php:765} in /Users/tusharkaw/Downloads/GnosPedia/includes/ServiceWiring.php at line 789] in /Users/tusharkaw/Downloads/GnosPedia/includes/debug/MWDebug.php on line 386
 [28-Sep-2025 08:10:56 UTC] PHP Warning:  Called Profiler::instance before settings are loaded in /Users/tusharkaw/Downloads/GnosPedia/includes/profiler/Profiler.php on line 107
+[27-Jan-2026 07:56:25 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:56:25 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:57:52 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:57:52 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:57:53 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:57:53 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:58:13 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 07:58:13 UTC] PHP Fatal error:  Uncaught MediaWiki\Registration\ExtensionDependencyError: Translate is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.0.
+ContactPage is not compatible with the current MediaWiki core (version 1.44.0), it requires: >= 1.46.
+ in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php:477
+Stack trace:
+#0 C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php(329): MediaWiki\Registration\ExtensionRegistry->readFromQueue(Array)
+#1 C:\Users\user\Downloads\GnosPedia\includes\Setup.php(299): MediaWiki\Registration\ExtensionRegistry->loadFromQueue()
+#2 C:\Users\user\Downloads\GnosPedia\includes\WebStart.php(86): require_once('C:\\Users\\user\\D...')
+#3 C:\Users\user\Downloads\GnosPedia\index.php(50): require('C:\\Users\\user\\D...')
+#4 C:\Users\user\Downloads\GnosPedia\router.php(14): require('C:\\Users\\user\\D...')
+#5 {main}
+  thrown in C:\Users\user\Downloads\GnosPedia\includes\registration\ExtensionRegistry.php on line 477
+[27-Jan-2026 08:03:16 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:04:32 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:05:43 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:06:40 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:08:02 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:09:10 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:10:16 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:11:10 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:13:42 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
+[27-Jan-2026 08:14:43 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Users\user\Downloads\GnosPedia\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php on line 45
